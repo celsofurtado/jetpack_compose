@@ -14,13 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SearchTextField(searchText: String) {
-    var text by remember { mutableStateOf(searchText) }
+fun SearchTextField(searchText: String, onSearchChange: (String) -> Unit) {
 
     OutlinedTextField(
-        value = text,
+        value = searchText,
         onValueChange = { newValue ->
-            text = newValue
+            onSearchChange(newValue)
             Log.i("HomeScreen", "TextField $newValue")
             Log.i("HomeScreen", "state $newValue")
         },
